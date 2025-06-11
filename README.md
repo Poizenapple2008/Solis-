@@ -1,1 +1,541 @@
-# Solis-
+ <!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Solis — Солнечные лидеры будущего</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset и базовые стили */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 960px;
+      width: 100%;
+      background: rgba(255 255 255 / 0.8);
+      border-radius: 16px;
+      padding: 2rem 3rem;
+      box-shadow: 0 6px 20px rgb(179 115 0 / 0.6);
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    h1, h2, h3 {
+      color: #7a4e00;
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-shadow: 0 2px 4px rgba(255, 213, 79, 0.8);
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #ffd54f, #f8b500);
+      border-radius: 2px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #5a3e00;
+      margin-bottom: 1.5rem;
+    }
+
+    .highlight {
+      background: linear-gradient(90deg, #fff4b3, #ffd54f);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* Секция основателей */
+    .founders-section {
+      margin: 2rem 0;
+    }
+
+    .founder-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .founder-btn {
+      background: linear-gradient(45deg, #fff4b3, #ffd54f);
+      color: #663c00;
+      font-weight: 700;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      box-shadow: 0 4px 8px rgb(179 115 0 / 0.4);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      min-width: 120px;
+    }
+
+    .founder-btn:hover,
+    .founder-btn.active {
+      background: linear-gradient(45deg, #ffd54f, #f8b500);
+      color: #fff;
+      box-shadow: 0 6px 12px rgb(255 213 79 / 0.7);
+      transform: translateY(-2px);
+    }
+
+    .founder-info {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 0 auto;
+      max-width: 700px;
+      font-size: 1.1rem;
+      color: #5a3e00;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 10px rgba(255, 213, 79, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    /* Секция проблем и решений */
+    .problems-section, .solutions-section {
+      text-align: left;
+      margin: 2rem 0;
+    }
+
+    .problem-item, .solution-item {
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 10px;
+      padding: 1.2rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .problem-icon, .solution-icon {
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* Форма регистрации */
+    .registration-form {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-top: 2rem;
+      box-shadow: 0 4px 15px rgba(179, 115, 0, 0.2);
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #5a3e00;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid #ffd54f;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #f8b500;
+      box-shadow: 0 0 0 3px rgba(255, 213, 79, 0.3);
+    }
+
+    .submit-btn {
+      background: linear-gradient(45deg, #ffd54f, #f8b500);
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(255, 213, 79, 0.5);
+    }
+
+    /* Секция зарегистрированных */
+    .registered-members {
+      margin-top: 2rem;
+      display: none;
+    }
+
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .member-card {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(179, 115, 0, 0.1);
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .founder-buttons {
+        gap: 0.8rem;
+      }
+      
+      .founder-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+        min-width: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Solis ☀️</h1>
+    <p>Мы - сообщество солнечных лидеров, освещающих путь к саморазвитию и личностному росту! 🌟</p>
+
+    <!-- Секция основателей -->
+    <div class="founders-section">
+      <h2>Наши основатели</h2>
+      <div class="founder-buttons">
+        <button class="founder-btn active" data-founder="nazira">Назира 🌟</button>
+        <button class="founder-btn" data-founder="begimai">Бегимай 📚</button>
+        <button class="founder-btn" data-founder="ademi">Адеми 🎤</button>
+        <button class="founder-btn" data-founder="madina">Мадина 🎨</button>
+        <button class="founder-btn" data-founder="nodira">Нодира ⏰</button>
+      </div>
+      <div class="founder-info" id="founder-info">
+        Назира — лидер проекта Solis, вдохновляет своим примером! 💫 Любит самосовершенствование и личностный рост. Ее миссия — помогать другим раскрывать свой потенциал и становиться лучшей версией себя. "Каждый день — это возможность стать на шаг ближе к своей мечте!" — ее жизненное кредо.
+      </div>
+    </div>
+
+    <!-- Секция актуальных проблем -->
+    <div class="problems-section">
+      <h2>Актуальные проблемы 🚨</h2>
+      
+      <div class="problem-item">
+        <div class="problem-icon">🔍</div>
+        <div>
+          <h3>Низкая самооценка и неуверенность</h3>
+          <p>Многие молодые люди страдают от недостатка уверенности в себе, что мешает им реализовать свой потенциал и достигать целей.</p>
+        </div>
+      </div>
+      
+      <div class="problem-item">
+        <div class="problem-icon">🎤</div>
+        <div>
+          <h3>Страх публичных выступлений</h3>
+          <p>Боязнь выступать перед аудиторией — одна из самых распространенных фобий, которая ограничивает профессиональный и личностный рост.</p>
+        </div>
+      </div>
+      
+      <div class="problem-item">
+        <div class="problem-icon">🎨</div>
+        <div>
+          <h3>Отсутствие творческой реализации</h3>
+          <p>Многие не находят способов для самовыражения, что приводит к эмоциональному выгоранию и потере мотивации.</p>
+        </div>
+      </div>
+      
+      <div class="problem-item">
+        <div class="problem-icon">⏰</div>
+        <div>
+          <h3>Проблемы с тайм-менеджментом</h3>
+          <p>Неумение организовать свое время — главная причина стресса и низкой продуктивности у современной молодежи.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Как Solis помогает -->
+    <div class="solutions-section">
+      <h2>Как Solis помогает? 💡</h2>
+      
+      <div class="solution-item">
+        <div class="solution-icon">✨</div>
+        <div>
+          <h3>Курсы по самоуверенности</h3>
+          <p>Наши программы помогают участникам обрести уверенность в себе через практические упражнения и поддержку сообщества. "Ты сильнее, чем думаешь!" — наш девиз.</p>
+        </div>
+      </div>
+      
+      <div class="solution-item">
+        <div class="solution-icon">🎭</div>
+        <div>
+          <h3>Тренинги ораторского мастерства</h3>
+          <p>Мы превращаем страх выступлений в удовольствие! Наши методики позволяют быстро освоить навыки убедительной речи.</p>
+        </div>
+      </div>
+      
+      <div class="solution-item">
+        <div class="solution-icon">🖌️</div>
+        <div>
+          <h3>Арт-терапия и творческие мастерские</h3>
+          <p>Через искусство мы помогаем найти внутреннюю гармонию и раскрыть творческий потенциал каждого участника.</p>
+        </div>
+      </div>
+      
+      <div class="solution-item">
+        <div class="solution-icon">📅</div>
+        <div>
+          <h3>Системы планирования</h3>
+          <p>Научим организовывать время так, чтобы успевать больше и меньше уставать. Наши методы проверены на практике!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- О проекте Solis -->
+    <div class="about-section">
+      <h2>Что такое Solis? 🌞</h2>
+      <p>Solis в переводе с латыни означает "Солнце" — и мы действительно как солнце для наших участников!</p>
+      <p>Мы — сообщество солнечных лидеров, которые:</p>
+      <ul style="text-align: left; margin: 1rem 0; list-style-type: none;">
+        <li>☀️ Светят своим примером</li>
+        <li>🔥 Зажигают других</li>
+        <li>💪 Развивают лидерские качества</li>
+        <li>🌱 Помогают расти и совершенствоваться</li>
+      </ul>
+      <p>Наша миссия — создавать среду, где каждый может раскрыть свой потенциал и стать лучшей версией себя!</p>
+      <p class="highlight">"Лидер — не тот, кто ведет за собой, а тот, кто помогает другим найти свой путь."</p>
+    </div>
+
+    <!-- Форма регистрации -->
+    <div class="registration-form">
+      <h2>Присоединяйтесь к нам! 🤝</h2>
+      <form id="registrationForm">
+        <div class="form-group">
+          <label for="name">Ваше имя:</label>
+          <input type="text" id="name" name="name" required placeholder="Как к вам обращаться?">
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required placeholder="example@mail.com">
+        </div>
+        
+        <div class="form-group">
+          <label for="age">Ваш возраст:</label>
+          <input type="number" id="age" name="age" min="12" max="99" required placeholder="От 12 до 99">
+        </div>
+        
+        <button type="submit" class="submit-btn">Стать частью Solis! 🌟</button>
+      </form>
+    </div>
+
+    <!-- Секция зарегистрированных участников -->
+    <div class="registered-members" id="registeredMembers">
+      <h2>Наше солнечное сообщество 🌈</h2>
+      <p>Уже <span id="membersCount">0</span> человек стали частью Solis!</p>
+      
+      <div class="members-grid" id="membersGrid">
+        <!-- Здесь будут отображаться зарегистрированные участники -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Данные основателей
+    const foundersData = {
+      "nazira": {
+        name: "Назира 🌟",
+        role: "Лидер проекта Solis",
+        description: "Назира — сердце и душа нашего проекта! 💖 Как лидер, она вдохновляет команду и участников своим примером. Обожает самосовершенствование и личностный рост, постоянно изучает новые методики развития. Ее энергия заряжает всех вокруг! Любимая фраза: 'Каждый может стать солнцем, которое освещает путь другим!'",
+        quote: "Ваш потенциал безграничен — раскройте его!"
+      },
+      "begimai": {
+        name: "Бегимай 📚",
+        role: "Преподаватель по самоуверенности",
+        description: "Бегимай — наш эксперт по уверенности в себе! 💪 Помогла уже сотням людей преодолеть застенчивость и поверить в себя. Обожает читать — ее библиотека насчитывает более 500 книг по психологии и саморазвитию. 'Уверенность — это навык, который можно развить, как мышцу!' — любит повторять она.",
+        quote: "Вы достойны всего самого лучшего — поверьте в это!"
+      },
+      "ademi": {
+        name: "Адеми 🎤",
+        role: "Преподаватель по ораторскому мастерству",
+        description: "Адеми — мастер слова и сцены! 🎭 Провела более 200 выступлений и научила искусству убедительной речи сотни людей. Для нее сцена — второй дом, а микрофон — лучший друг. 'Говорите так, чтобы вас не просто слушали, а слышали!' — ее профессиональное кредо.",
+        quote: "Ваш голос имеет значение — дайте ему звучать!"
+      },
+      "madina": {
+        name: "Мадина 🎨",
+        role: "Арт-терапевт",
+        description: "Мадина — творческая душа нашей команды! 🖌️ С помощью искусства она помогает людям выражать эмоции, справляться со стрессом и раскрывать свой потенциал. Ее мастерские — это всегда море вдохновения и позитива. 'Творчество — это язык души, который понимают все!' — говорит Мадина.",
+        quote: "Рисуйте свою жизнь яркими красками!"
+      },
+      "nodira": {
+        name: "Нодира ⏰",
+        role: "Creator и организатор",
+        description: "Нодира — наш генератор идей и мастер организации! 📅 Обожает планировать, структурировать и доводить все до совершенства. Ее день расписан по минутам, и она учит других такой же продуктивности. 'Дисциплина — это свобода!' — ее жизненное правило. Нодира показывает, как успевать больше, уставая меньше.",
+        quote: "Организуй свой день — измени свою жизнь!"
+      }
+    };
+
+    // Инициализация информации о основателях
+    const founderButtons = document.querySelectorAll('.founder-btn');
+    const founderInfo = document.getElementById('founder-info');
+
+    founderButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Удаляем активный класс у всех кнопок
+        founderButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // Добавляем активный класс текущей кнопке
+        button.classList.add('active');
+        
+        // Получаем данные основателя
+        const founderKey = button.getAttribute('data-founder');
+        const founder = foundersData[founderKey];
+        
+        // Обновляем информацию
+        founderInfo.innerHTML = `
+          <strong>${founder.name}</strong> — ${founder.role}<br><br>
+          ${founder.description}<br><br>
+          <em>"${founder.quote}"</em>
+        `;
+      });
+    });
+
+    // Обработка формы регистрации
+    const registrationForm = document.getElementById('registrationForm');
+    const registeredMembersSection = document.getElementById('registeredMembers');
+    const membersGrid = document.getElementById('membersGrid');
+    const membersCount = document.getElementById('membersCount');
+    
+    let registeredMembers = [];
+    
+    registrationForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Получаем данные формы
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const age = document.getElementById('age').value;
+      
+      // Проверяем email (простая проверка)
+      if (!email.includes('@') || !email.includes('.')) {
+        alert('Пожалуйста, введите корректный email!');
+        return;
+      }
+      
+      // Создаем объект участника
+      const newMember = {
+        name: name,
+        email: email,
+        age: age,
+        joinDate: new Date().toLocaleDateString()
+      };
+      
+      // Добавляем в массив
+      registeredMembers.push(newMember);
+      
+      // Обновляем счетчик
+      membersCount.textContent = registeredMembers.length;
+      
+      // Добавляем нового участника в сетку
+      const memberCard = document.createElement('div');
+      memberCard.className = 'member-card';
+      memberCard.innerHTML = `
+        <strong>${name}</strong><br>
+        Возраст: ${age}<br>
+        С нами с: ${newMember.joinDate}
+      `;
+      membersGrid.appendChild(memberCard);
+      
+      // Показываем секцию зарегистрированных, если она скрыта
+      registeredMembersSection.style.display = 'block';
+      
+      // Очищаем форму
+      registrationForm.reset();
+      
+      // Показываем сообщение об успехе
+      alert(`Спасибо, ${name}! 🎉 Вы стали частью нашего солнечного сообщества Solis! Скоро мы свяжемся с вами.`);
+      
+      // Прокручиваем к секции зарегистрированных
+      registeredMembersSection.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Имитация уже зарегистрированных участников (для демонстрации)
+    const demoMembers = [
+      { name: "Айгерим", age: 22, joinDate: "12.05.2023" },
+      { name: "Данияр", age: 19, joinDate: "28.05.2023" },
+      { name: "Аружан", age: 25, joinDate: "03.06.2023" },
+      { name: "Алихан", age: 17, joinDate: "10.06.2023" }
+    ];
+
+    // Добавляем демо-участников
+    window.addEventListener('DOMContentLoaded', () => {
+      demoMembers.forEach(member => {
+        const memberCard = document.createElement('div');
+        memberCard.className = 'member-card';
+        memberCard.innerHTML = `
+          <strong>${member.name}</strong><br>
+          Возраст: ${member.age}<br>
+          С нами с: ${member.joinDate}
+        `;
+        membersGrid.appendChild(memberCard);
+      });
+      
+      registeredMembers = [...demoMembers];
+      membersCount.textContent = registeredMembers.length;
+    });
+  </script>
+</body>
+</html>
